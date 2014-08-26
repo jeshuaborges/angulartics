@@ -175,13 +175,13 @@ angular.module('angulartics', [])
       $rootScope.$on('$routeChangeSuccess', function (event, current) {
         if (current && (current.$$route||current).redirectTo) return;
         var url = $analytics.settings.pageTracking.basePath + $location.url();
-        $analytics.pageTrack(url);
+        $analytics.pageTrack(url, current);
       });
     }
     if ($injector.has('$state')) {
       $rootScope.$on('$stateChangeSuccess', function (event, current) {
         var url = $analytics.settings.pageTracking.basePath + $location.url();
-        $analytics.pageTrack(url, current.name);
+        $analytics.pageTrack(url, current);
       });
     }
   }
